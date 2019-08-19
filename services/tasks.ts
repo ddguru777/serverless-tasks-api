@@ -4,12 +4,12 @@ import dynamodb from './dynamodb';
 
 class TasksService {
 
-    async addTasks(data) {
+    addTasks = (data) => {
         try {
             const params = tasksModel(data);
             
             // write the task to the database
-            const ret = await dynamodb.put(params, (error) => {
+            const ret = dynamodb.put(params, (error) => {
 
                 // handle potential errors
                 if (error) {
@@ -26,7 +26,7 @@ class TasksService {
         }
     }
 
-    async updateTasks(data) {
+    updateTasks = (data) => {
         try {
             if (data.eventName !== "INSERT") {
                 return false;
@@ -48,7 +48,7 @@ class TasksService {
             };
 
             // update the task in the database
-            const ret = await dynamodb.update(params, (error, result) => {
+            const ret = dynamodb.update(params, (error, result) => {
                 // handle potential errors
                 if (error) {
                     console.error(error);
