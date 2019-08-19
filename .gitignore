@@ -7,6 +7,12 @@ config/prod-env.json
 # Dynamodb
 .dynamodb
 
+# package-lock.json
+package-lock.json
+
+# build
+.build
+
 # Logs
 logs
 *.log
