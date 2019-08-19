@@ -5,6 +5,7 @@ frameworkVersion: ">=1.1.0 <2.0.0"
 plugins:
   - serverless-dynamodb-local
   - serverless-offline-dynamodb-streams
+  - serverless-plugin-typescript
   - serverless-offline
 
 custom:
@@ -55,14 +56,14 @@ functions:
           method: post
           cors: true
 
-  list:
-    #handler: tasks/list.list
-    handler: handler.list
-    events:
-      - http:
-          path: tasks
-          method: get
-          cors: true
+  # list:
+  #   #handler: tasks/list.list
+  #   handler: handler.list
+  #   events:
+  #     - http:
+  #         path: tasks
+  #         method: get
+  #         cors: true
 
   triggerStream:
     handler: handler.triggerStream

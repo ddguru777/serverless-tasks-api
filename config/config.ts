@@ -1,4 +1,3 @@
-'use strict';
 
 const requiredEnvVars = [
     'SOME_ENV_VAR'

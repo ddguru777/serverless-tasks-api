@@ -1,14 +1,3 @@
-'use strict';
-
-module.exports = {
-    ok,
-    badRequest,
-    serverError,
-    redirect,
-    unauthorized,
-    forbidden
-}
-
 const ok = (body) => {
     return encode(200, body);
 }
@@ -44,4 +33,13 @@ const encode = (statusCode, body) => {
         statusCode: statusCode,
         body: JSON.stringify(body)
     };
+}
+
+export {
+    ok,
+    badRequest,
+    serverError,
+    redirect,
+    unauthorized,
+    forbidden
 }
