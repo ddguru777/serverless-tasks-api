@@ -23,7 +23,7 @@ serverless dynamodb migrate (this imports schema)
 ## Run service offline
 
 ```bash
-serverless offline start
+serverless offline start --stage dev (optional)
 ```
 
 ## Usage
@@ -38,7 +38,7 @@ curl -X POST -H "Content-Type:application/json" http://localhost:3000/tasks --da
 
 Example Result:
 ```bash
-{"id":"ba343c00-c26d-11e9-a601-cd53305d4681","name":"Serverless tasks 1","createdAt":1566211214272,"updatedAt":1566211214272}%
+{"data":"Task has been created."}%
 ```
 
 ### Update a Task (insert slug in the task record) with triggerstream
