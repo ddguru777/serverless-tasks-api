@@ -1,21 +1,9 @@
-<!--
-title: 'AWS Serverless REST API with DynamoDB and offline support example in NodeJS'
-description: 'This example demonstrates how to run a service locally, using the ''serverless-offline'' plugin. It provides a REST API to manage Todos stored in DynamoDB.'
-layout: Doc
-framework: v1
-platform: AWS
-language: nodeJS
-authorLink: 'https://github.com/adambrgmn'
-authorName: 'Adam Bergman'
-authorAvatar: 'https://avatars1.githubusercontent.com/u/13746650?v=4&s=140'
--->
 # Serverless REST API with DynamoDB and offline support
 
 This example demonstrates how to run a service locally, using the
 [serverless-offline](https://github.com/dherault/serverless-offline) plugin. It
-provides a REST API to manage Todos stored in a DynamoDB, similar to the
-[aws-node-rest-api-with-dynamodb](https://github.com/serverless/examples/tree/master/aws-node-rest-api-with-dynamodb)
-example. A local DynamoDB instance is provided by the
+provides a REST API to manage Tasks stored in a DynamoDB.
+A local DynamoDB instance is provided by the
 [serverless-dynamodb-local](https://github.com/99xt/serverless-dynamodb-local)
 plugin.
 
@@ -40,59 +28,32 @@ serverless offline start
 
 ## Usage
 
-You can create, retrieve, update, or delete todos with the following commands:
+You can create tasks and update slug with triggerstream with the following commands:
 
-### Create a Todo
+### Create a Task
 
 ```bash
-curl -X POST -H "Content-Type:application/json" http://localhost:3000/todos --data '{ "text": "Learn Serverless" }'
+curl -X POST -H "Content-Type:application/json" http://localhost:3000/tasks --data '{ "name": "Serverless tasks 1" }'
 ```
 
 Example Result:
 ```bash
-{"text":"Learn Serverless","id":"ee6490d0-aa11e6-9ede-afdfa051af86","createdAt":1479138570824,"checked":false,"updatedAt":1479138570824}%
+{"id":"ba343c00-c26d-11e9-a601-cd53305d4681","name":"Serverless tasks 1","createdAt":1566211214272,"updatedAt":1566211214272}%
 ```
 
-### List all Todos
+### Update a Task (insert slug in the task record) with triggerstream
 
-```bash
-curl -H "Content-Type:application/json" http://localhost:3000/todos
-```
-
-Example output:
-```bash
-[{"text":"Deploy my first service","id":"ac90feaa11e6-9ede-afdfa051af86","checked":true,"updatedAt":1479139961304},{"text":"Learn Serverless","id":"206793aa11e6-9ede-afdfa051af86","createdAt":1479139943241,"checked":false,"updatedAt":1479139943241}]%
-```
-
-### Get one Todo
-
-```bash
-# Replace the <id> part with a real id from your todos table
-curl -H "Content-Type:application/json" http://localhost:3000/todos/<id>
-```
-
-Example Result:
-```bash
-{"text":"Learn Serverless","id":"ee6490d0-aa11e6-9ede-afdfa051af86","createdAt":1479138570824,"checked":false,"updatedAt":1479138570824}%
-```
-
-### Update a Todo
-
-```bash
-# Replace the <id> part with a real id from your todos table
-curl -X PUT -H "Content-Type:application/json" http://localhost:3000/todos/<id> --data '{ "text": "Learn Serverless", "checked": true }'
-```
-
-Example Result:
-```bash
-{"text":"Learn Serverless","id":"ee6490d0-aa11e6-9ede-afdfa051af86","createdAt":1479138570824,"checked":true,"updatedAt":1479138570824}%
-```
-
-### Delete a Todo
-
-```bash
-# Replace the <id> part with a real id from your todos table
-curl -X DELETE -H "Content-Type:application/json" http://localhost:3000/todos/<id>
-```
+Automatically update when the task has been created.
 
 No output
+
+### List all Tasks
+
+```bash
+curl -H "Content-Type:application/json" http://localhost:3000/tasks
+```
+
+Example Result:
+```bash
+{"name": "Serverless tasks 1","createdAt": 1566211214272,"id": "ba343c00-c26d-11e9-a601-cd53305d4681","slug": "Serverless-tasks-1","updatedAt": 1566211214272}%
+```
