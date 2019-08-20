@@ -38,7 +38,7 @@ curl -X POST -H "Content-Type:application/json" http://localhost:3000/tasks --da
 
 Example Result:
 ```bash
-{"data":"Task has been created."}%
+{"data":"Task has been created."}
 ```
 
 ### Update a Task (insert slug in the task record) with triggerstream
@@ -55,5 +55,5 @@ curl -H "Content-Type:application/json" http://localhost:3000/tasks
 
 Example Result:
 ```bash
-{"name": "Serverless tasks 1","createdAt": 1566211214272,"id": "ba343c00-c26d-11e9-a601-cd53305d4681","slug": "Serverless-tasks-1","updatedAt": 1566211214272}%
+{"name": "Serverless tasks 1","createdAt": 1566211214272,"id": "ba343c00-c26d-11e9-a601-cd53305d4681","slug": "Serverless-tasks-1","updatedAt": 1566211214272}
 ```

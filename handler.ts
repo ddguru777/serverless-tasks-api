@@ -17,6 +17,7 @@ export const create = (event, context, callback) => {
   }  
 };
 
+// create for test
 export const list = (event, context, callback) => {
     const params = {
       TableName: process.env.DYNAMODB_TABLE,
